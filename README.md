@@ -1,36 +1,15 @@
-# Setup project 
-```
-npx react-native init camino-credential-piligrim-app
-```
-or
-```
-yarn global add expo-cli
-expo init camino-credential-piligrim-app
-```
-or
-```
-yarn global add ignite
-yarn global add ignite-cli
-ignite new camino-credential-piligrim-app
-```
+# credential
 
-# TIPS
-To run your project, navigate to the directory and run one of the following yarn commands.
+## Tips
 ```
-- cd camino-credential-piligrim-app
-- yarn start # you can open iOS, Android, or web from here, or run them directly with the commands below.
-- yarn android
-- yarn ios # requires an iOS device or macOS for access to an iOS simulator
-- yarn web
-```
-
-```
-npm install --global windows-build-tools
-
-    // "fabric-network": "^2.2.4",
-    // "http2": "^3.3.7",
-    // "nodejs-mobile-react-native": "^0.6.2",
-    // "pkcs11js": "^1.2.0",
-
-    
+npm install nodejs-mobile-react-native --save
+https://github.com/JaneaSystems/nodejs-mobile-react-native
+https://code.janeasystems.com/nodejs-mobile/cordova/bridge
+https://hyperledger.github.io/fabric-sdk-node/release-2.2/tutorial-wallet.html
+https://hyperledger.github.io/fabric-sdk-node/release-2.2/module-fabric-network.WalletStore.html
+https://hyperledger.github.io/fabric-sdk-node/release-1.4/tutorial-network-config.html
+https://hyperledger.github.io/fabric-sdk-node/release-1.4/module-fabric-network.html#toc2__anchor
+cd n...
+npm install fabric-network --save
+https://hyperledger.github.io/fabric-sdk-node/release-1.4/module-fabric-network.html
 ```

@@ -23,7 +23,7 @@ declare const global: {HermesInternal: null | {}};
 const App = () => {
 
   useEffect(() => {
-    nodejs.start("main.js");
+    nodejs.start("nodejs-assets/nodejs-project/main.js");
     nodejs.channel.addListener(
       "message",
       (msg: any) => {

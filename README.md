@@ -2,6 +2,11 @@
 
 ## Tips
 ```
+cd android
+gradlew clean
+cd ..
+```
+```
 START HERE:
 ```
 https://github.com/JaneaSystems/nodejs-mobile-react-native

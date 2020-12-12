@@ -6,11 +6,14 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
+import { Instance } from "./services/identity-provider";
+
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
   useEffect(() => {
+    const testOnly = Instance;
   },[]);
 
   if (!isLoadingComplete) {

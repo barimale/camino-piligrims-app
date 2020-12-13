@@ -1,23 +1,37 @@
 import * as React from 'react';
 import { View, Text, Button, Separator } from '../../components/Themed';
+import { StackScreenProps } from '@react-navigation/stack';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import Colors from '../../constants/Colors';
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthStackParamList } from '../../types';
 
-export default function ChooseScreen() {
+export default function ChooseScreen({
+  navigation,
+}: StackScreenProps<AuthStackParamList, 'Auth'>) {
   
     return (
     <View style={styles.getStartedContainer}>
+      <View style={styles.logoContainer}>
+        <Text style={styles.title}>CAMINO</Text>
+        <Text style={styles.title}>DIGITAL</Text>
+        <Text style={styles.title}>CREDENTIAL</Text>
+      </View>
       <View style={styles.contentContainer}>
         <Button
           title="Sign In"
           onPress={async () => {
             //go to subpage
+            navigation.navigate('NotFound');
           }}
         />
+      </View>
+      <View style={styles.contentContainer}>
         <Button
           title="Sign Up"
           onPress={async () => {
             //go to subpage
+            navigation.navigate('NotFound');
           }}
         />
       </View>
@@ -25,6 +39,7 @@ export default function ChooseScreen() {
       <View style={styles.helpContainer}>
       <TouchableOpacity onPress={()=>{
         //navigate to subpage
+        navigation.navigate('NotFound');
       }} style={styles.helpLink}>
         <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
           I forgot password
@@ -41,19 +56,13 @@ export default function ChooseScreen() {
       backgroundColor: '#fff',
     },
     contentContainer: {
-      paddingTop: 30,
+      paddingTop: 16,
+      width: '80%',
     },
     welcomeContainer: {
       alignItems: 'center',
       marginTop: 10,
       marginBottom: 20,
-    },
-    welcomeImage: {
-      width: 100,
-      height: 80,
-      resizeMode: 'contain',
-      marginTop: 3,
-      marginLeft: -10,
     },
     getStartedContainer: {
       alignItems: 'center',
@@ -79,5 +88,20 @@ export default function ChooseScreen() {
     },
     helpLinkText: {
       textAlign: 'center',
+    },
+    logoContainer: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 20,
+    },
+    title: {
+      fontSize: 40,
+      fontWeight: 'bold',
+    },
+    linkText: {
+      fontSize: 14,
+      color: '#2e78b7',
     },
   });

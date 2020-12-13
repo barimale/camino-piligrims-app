@@ -8,6 +8,11 @@ export type AuthStackParamList = {
   NotFound: undefined;
 };
 
+export type AuthTabParamList = {
+  SignIn: undefined;
+  SignUp: undefined;
+};
+
 export type BottomTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;

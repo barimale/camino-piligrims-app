@@ -4,7 +4,7 @@ import { ColorSchemeName } from 'react-native';
 
 export default function LogoScreen(props: { colorScheme: ColorSchemeName }) {
   return (
-    <View style={styles.container}>
+    <View style={styles.logoContainer}>
       <Text style={styles.title}>CAMINO DIGITAL CREDENTIAL LOGO</Text>
       <Text style={styles.linkText}>{props.colorScheme}</Text>
     </View>
@@ -12,7 +12,7 @@ export default function LogoScreen(props: { colorScheme: ColorSchemeName }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  logoContainer: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',

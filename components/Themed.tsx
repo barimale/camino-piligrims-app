@@ -51,7 +51,7 @@ export function View(props: ViewProps) {
 
 export const Separator = (props: ViewProps) => {
   const { style, lightColor, darkColor, ...otherProps } = props;
-  const borderBottomColor = useThemeColor({ light: lightColor, dark: darkColor }, 'tabIconDefault');
+  const borderBottomColor = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
   return <View style={[{ borderBottomColor }, style, styles.separator]} {...otherProps}/>;
 };
@@ -59,6 +59,7 @@ export const Separator = (props: ViewProps) => {
 const styles = StyleSheet.create({
   separator: {
     marginVertical: 8,
+    borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth
   }
 });

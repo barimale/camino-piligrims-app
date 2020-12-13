@@ -56,10 +56,43 @@ export const Separator = (props: ViewProps) => {
   return <View style={[{ borderBottomColor }, style, styles.separator]} {...otherProps}/>;
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
+  borderedText: {
+    borderColor: '#737373',
+    borderWidth: 1,
+  },
   separator: {
     marginVertical: 8,
     borderBottomColor: '#737373',
     borderBottomWidth: StyleSheet.hairlineWidth
-  }
+  },
+  pageWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  normalTextWrapper: {
+    marginTop: 15,
+    marginHorizontal: 20,
+    alignItems: 'center',
+  },
+  normalTextTouchable: {
+    paddingVertical: 15,
+  },
+  normalText: {
+    textAlign: 'center',
+  },
+  logoWrapper: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  title: {
+    fontSize: 40,
+    fontWeight: 'bold',
+  },
 });

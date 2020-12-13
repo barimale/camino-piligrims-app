@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Button } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { View } from '../../components/Themed';
+import { View, Text } from '../../components/Themed';
 import { AuthContext } from '../../contexts/AuthContext';
+import { styles } from "../../components/Themed";
+import { StyleSheet } from 'react-native';
 
 export default function SignInScreen() {
     const [username, setUsername] = React.useState('');
@@ -12,23 +14,48 @@ export default function SignInScreen() {
     const { signIn } = React.useContext(AuthContext);
   
     return (
-      <View>
-        <TextInput
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        <Button disabled={isSigningIn} title="Sign in" onPress={async () => {
-            setIsSigningIn(true);
-            await signIn({ username, password });
-            setIsSigningIn(false);
-          }} />
+      <View style={styles.pageWrapper}>
+        <View style={styles.logoWrapper}>
+          <Text style={styles.title}>Bom</Text>
+          <Text style={styles.title}>Camino</Text>
+          <Text style={styles.title}>!</Text>
+      </View>
+        <View style={innerStyles.buttonWrapper}>
+          <Text>
+            Unique ID
+          </Text>
+          <TextInput
+            style={styles.borderedText}
+            value={username}
+            onChangeText={setUsername}
+          />
+        </View>
+        <View style={innerStyles.buttonWrapper}>
+          <Text>
+            Repeat unique ID
+          </Text>
+          <TextInput
+            style={styles.borderedText}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+        </View>
+        <View style={innerStyles.buttonWrapper}>
+          <Button disabled={isSigningIn} title="Sign in" onPress={async () => {
+              setIsSigningIn(true);
+              await signIn({ username, password });
+              setIsSigningIn(false);
+            }} />
+        </View>
       </View>
     );
   }
+
+  const innerStyles = StyleSheet.create({
+    buttonWrapper: {
+      paddingTop: 16,
+      height: '20%',
+      width: '80%',
+    }
+  });

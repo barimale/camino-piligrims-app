@@ -1,29 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
+import Navigation, { AuthNavigation } from './navigation';
+import LogoScreen from './screens/LogoScreen';
 
-import { Instance } from "./services/identity-provider";
+import ResourceLoadedApp from './ResourceLoadedApp';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
-  useEffect(() => {
-    const testOnly = Instance;
-  },[]);
-
   if (!isLoadingComplete) {
-    return null;
+    return <LogoScreen colorScheme={colorScheme}/>;
   } else {
-    return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
-    );
+    return <ResourceLoadedApp colorScheme={colorScheme}/>;
   }
 }

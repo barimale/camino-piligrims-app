@@ -19,7 +19,7 @@ export default function SignInScreen() {
           <Text style={styles.title}>Bom</Text>
           <Text style={styles.title}>Camino</Text>
           <Text style={styles.title}>!</Text>
-      </View>
+        </View>
         <View style={innerStyles.buttonWrapper}>
           <Text>
             Unique ID

@@ -8,6 +8,7 @@ import Navigation, { AuthNavigation } from './navigation';
 import LogoScreen from './screens/LogoScreen';
 
 import ResourceLoadedApp from './ResourceLoadedApp';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -16,6 +17,10 @@ export default function App() {
   if (!isLoadingComplete) {
     return <LogoScreen colorScheme={colorScheme}/>;
   } else {
-    return <ResourceLoadedApp colorScheme={colorScheme}/>;
+    return (
+      <AuthContextProvider>
+        <ResourceLoadedApp colorScheme={colorScheme}/>
+      </AuthContextProvider>
+    );
   }
 }

@@ -1,5 +1,6 @@
-import { createContext, useEffect, useReducer, useMemo } from 'react';
+import React, { createContext, useEffect, useReducer, useMemo } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // import { Instance } from "../services/identity-provider";
 
 interface AuthContextType {

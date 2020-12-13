@@ -1,7 +1,8 @@
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, TouchableOpacity } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 import ChooseScreen from "../screens/auth/ChooseScreen";
 import NotFoundScreen from '../screens/app/NotFoundScreen';
@@ -12,6 +13,7 @@ import AuthLinkingConfiguration from './AuthLinkingConfiguration';
 import SignInScreen from '../screens/auth/SignInScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
 import RememberPasswordScreen from '../screens/auth/RememberPasswordScreen';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -36,9 +38,20 @@ export function AuthNavigation({ colorScheme }: { colorScheme: ColorSchemeName }
 const Stack = createStackNavigator<RootStackParamList>();
 
 function SecuredRootNavigator() {
+  const { signOut } = React.useContext(AuthContext);
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{
+          headerRight: () => (
+            <TouchableOpacity onPress={signOut}>
+              <MaterialIcons name="logout" size={24} color="black" />            
+            </TouchableOpacity>
+          )
+        }}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

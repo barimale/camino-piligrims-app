@@ -5,8 +5,12 @@ export default {
   config: {
     screens: {
       Auth: {
-        ChooseScreen: '/auth/',
         screens: {
+          Choose: {
+            screens: {
+              ChooseScreen: '/auth/choose',
+            },
+          },
           SignIn: {
             screens: {
               SignInScreen: '/auth/sign-in',

@@ -8,7 +8,7 @@ import { styles } from "../../components/Themed";
 
 export default function ChooseScreen({
   navigation,
-}: StackScreenProps<AuthStackParamList, 'Auth'>) {
+}: StackScreenProps<AuthStackParamList, 'Choose'>) {
   
     return (
     <View style={styles.pageWrapper}>

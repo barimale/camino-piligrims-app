@@ -10,6 +10,7 @@ export type AuthStackParamList = {
   SignUp: undefined;
   RememberPassword: undefined;
   NotFound: undefined;
+  App: undefined;
 };
 
 export type BottomTabParamList = {

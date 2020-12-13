@@ -71,7 +71,6 @@ const AuthContextProvider = ({ children }: any) => {
             // In a production app, 
             // we need to send some data (usually username, password)
             // to server and get a token
-    
             dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
           },
           signOut: async () => {
@@ -81,9 +80,11 @@ const AuthContextProvider = ({ children }: any) => {
                     console.log(error);
                     return;
                 });
-                dispatch({ type: 'SIGN_OUT' })
+
+                dispatch({ type: 'SIGN_OUT' });
               }catch(e){
                 console.log(e);
+                dispatch({ type: 'SIGN_OUT' });
               }
             },
           signUp: async (data: any) => {

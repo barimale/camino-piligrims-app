@@ -5,8 +5,10 @@ import { View, Text } from '../../components/Themed';
 import { AuthContext } from '../../contexts/AuthContext';
 import { styles } from "../../components/Themed";
 import { StyleSheet } from 'react-native';
+import { AuthStackParamList } from '../../types';
+import { StackScreenProps } from '@react-navigation/stack';
 
-export default function SignInScreen() {
+export default function SignInScreen({navigation}: StackScreenProps<AuthStackParamList, 'SignIn'>) {
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [isSigningIn, setIsSigningIn] = React.useState<boolean>(false);
@@ -45,6 +47,7 @@ export default function SignInScreen() {
           <Button disabled={isSigningIn} title="Sign in" onPress={async () => {
               setIsSigningIn(true);
               await signIn({ username, password });
+              navigation.navigate("App");
               setIsSigningIn(false);
             }} />
         </View>

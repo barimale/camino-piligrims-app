@@ -41,17 +41,20 @@ function SecuredRootNavigator() {
   const { signOut } = React.useContext(AuthContext);
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{
+    <Stack.Navigator
+      screenOptions={({ navigation }) => (
+        { 
+          headerShown: true,
           headerRight: () => (
-            <TouchableOpacity onPress={signOut}>
+            <TouchableOpacity onPress={async () => {
+              debugger
+              await signOut();
+              // navigation.navigate("SignOut");
+            }}>
               <MaterialIcons name="logout" size={24} color="black" />            
-            </TouchableOpacity>
-          )
-        }}/>
+            </TouchableOpacity>)})}
+      initialRouteName="Root">
+      <Stack.Screen name="Root" component={BottomTabNavigator}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );
@@ -61,12 +64,12 @@ const AuthStack = createStackNavigator<AuthStackParamList>();
 
 function AuthNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <AuthStack.Screen name="Auth" component={ChooseScreen} />
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name="Choose" component={ChooseScreen} />
       <AuthStack.Screen name="SignIn" component={SignInScreen} />
       <AuthStack.Screen name="SignUp" component={SignUpScreen} />
       <AuthStack.Screen name="RememberPassword" component={RememberPasswordScreen} />
       <AuthStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-    </Stack.Navigator>
+    </AuthStack.Navigator>
   );
 }

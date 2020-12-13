@@ -19,6 +19,7 @@ export default {
         },
       },
       NotFound: '*',
+      SignOut: '/',
     },
   },
 };

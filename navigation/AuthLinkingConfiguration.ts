@@ -1,33 +1,13 @@
 import * as Linking from 'expo-linking';
 
 export default {
-  prefixes: [Linking.makeUrl('/auth/')],
+  prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Auth: {
-        screens: {
-          Choose: {
-            screens: {
-              ChooseScreen: '/auth/choose',
-            },
-          },
-          SignIn: {
-            screens: {
-              SignInScreen: '/auth/sign-in',
-            },
-          },
-          SignUp: {
-            screens: {
-              SignUpScreen: '/auth/sign-up',
-            },
-          },
-          SignOut: {
-            screens: {
-              SignOutScreen: '/auth/sign-out',
-            },
-          },
-        },
-      },
+      SignUp: '/auth/sign-up',
+      SignIn: '/auth/sign-in',
+      Choose: '/auth',
+      App: '/app/one',
       NotFound: '*',
     },
   },

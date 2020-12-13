@@ -76,6 +76,7 @@ const AuthContextProvider = ({ children }: any) => {
           },
           signOut: async () => {
               try{
+                debugger
                 await AsyncStorage.removeItem('userToken', (error: any)=>{
                     console.log(error);
                     return;

@@ -30,6 +30,7 @@ const AuthContextProvider = ({ children }: any) => {
                 isSignout: false,
                 isSignedIn: true,
                 userToken: action.token,
+                isLoading: false,
               };
             case 'SIGN_OUT':
               return {
@@ -58,7 +59,7 @@ const AuthContextProvider = ({ children }: any) => {
             console.log(e);
             userToken = null;
           } finally {
-            dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+            dispatch({ type: 'SIGN_IN', token: userToken });
           }
         };
     

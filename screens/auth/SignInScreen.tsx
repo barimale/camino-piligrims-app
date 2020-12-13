@@ -47,7 +47,6 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
           <Button disabled={isSigningIn} title="Sign in" onPress={async () => {
               setIsSigningIn(true);
               await signIn({ username, password });
-              navigation.navigate("App");
               setIsSigningIn(false);
             }} />
         </View>

@@ -7,7 +7,6 @@ export default {
       SignUp: '/auth/sign-up',
       SignIn: '/auth/sign-in',
       Choose: '/auth',
-      App: '/app/one',
       NotFound: '*',
     },
   },

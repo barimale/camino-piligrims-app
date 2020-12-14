@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useReducer, useMemo } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import * as SecureStore from 'expo-secure-store';
 // import { Instance } from "../services/identity-provider";
 
 interface AuthContextType {
@@ -8,103 +8,124 @@ interface AuthContextType {
     signOut: () => void;
     signUp: (input: {name: string, surname: string, email: string}) => Promise<void>;
     userToken: string | null;
-    isLoading: boolean;
     isSignedIn: boolean;
 }
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
+const TOKEN_KEY = 'userToken';
+
 const AuthContextProvider = ({ children }: any) => {
     const [state, dispatch] = useReducer(
         (prevState: any, action: any) => {
           switch (action.type) {
-            case 'RESTORE_TOKEN':
-              return {
-                ...prevState,
-                userToken: action.token,
-                isLoading: false,
-              };
             case 'SIGN_IN':
               return {
                 ...prevState,
-                isSignout: false,
                 isSignedIn: true,
                 userToken: action.token,
-                isLoading: false,
               };
             case 'SIGN_OUT':
               return {
                 ...prevState,
-                isSignout: true,
                 isSignedIn: false,
                 userToken: null,
               };
           }
         },
         {
-          isLoading: true,
-          isSignout: false,
           isSignedIn: false,
           userToken: null,
         }
       );
     
       useEffect(() => {
-        const bootstrapAsync = async () => {
-          let userToken;
+        const checkIfAlreadySignedIn = async () => {
+          let piligrimId: string | null = null;
     
           try {
-            userToken = await AsyncStorage.getItem('userToken');
+            const result = await SecureStore.isAvailableAsync();
+
+            if(result){
+              piligrimId = await SecureStore.getItemAsync(TOKEN_KEY);
+            }
+            else{
+              piligrimId = await AsyncStorage.getItem(TOKEN_KEY);
+            }
+            
           } catch (e) {
             console.log(e);
-            userToken = null;
           } finally {
-            dispatch({ type: 'SIGN_IN', token: userToken });
+            if(piligrimId !== null){
+              dispatch({ type: 'SIGN_IN', token: piligrimId });
+            }
+            else{
+              dispatch({ type: 'SIGN_OUT' });
+            }
           }
         };
     
-        bootstrapAsync();
+        checkIfAlreadySignedIn();
       }, []);
     
-      const authContext = useMemo(
-        () => ({
+      const authContext = ({
           signIn: async (data: {username: string, password: string}) => {
             // In a production app, 
-            // we need to send some data (usually username, password)
-            // to server and get a token
-            dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+            const piligrimId = "finalPiligrimIdFromFabricCaEtc";
+
+            const result = await SecureStore.isAvailableAsync();
+                
+            if(result){
+              await SecureStore.setItemAsync(TOKEN_KEY, piligrimId);
+              console.log('securelly saved');
+            }
+            else{
+              await AsyncStorage.setItem(TOKEN_KEY, piligrimId);
+            }
+
+            console.log('before signin');
+            dispatch({ type: 'SIGN_IN', token: piligrimId });
           },
           signOut: async () => {
               try{
-                debugger
-                await AsyncStorage.removeItem('userToken', (error: any)=>{
+                const result = await SecureStore.isAvailableAsync();
+                
+                if(result){
+                  await SecureStore.deleteItemAsync(TOKEN_KEY);
+                  console.log('securelly deleted');
+                }
+                else{
+                  await AsyncStorage.removeItem(TOKEN_KEY, (error: any)=>{
                     console.log(error);
-                    return;
-                });
+                  });
+                }
+                console.log('before signout');
 
-                dispatch({ type: 'SIGN_OUT' });
+                await dispatch({ type: 'SIGN_OUT' });
+                console.log('after signout');
               }catch(e){
                 console.log(e);
-                dispatch({ type: 'SIGN_OUT' });
               }
             },
           signUp: async (data: any) => {
             // In a production app, we need to send user data to server and get a token
-            // We will also need to handle errors if sign up failed
-            // After getting token, we need to persist the token using `AsyncStorage`
-            // In the example, we'll use a dummy token
-            
-            //add SignIn to dispatcher
+            console.log('start signup');
+            const piligrimId = "finalPiligrimIdFromFabricCaEtc";
+            const result = await SecureStore.isAvailableAsync();
+                
+            if(result){
+              await SecureStore.setItemAsync(TOKEN_KEY, piligrimId);
+            }
+            else{
+              await AsyncStorage.setItem(TOKEN_KEY, piligrimId);
+            }
 
-            dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
+            dispatch({ type: 'SIGN_IN', token: piligrimId });
+            console.log('finish signup');
           },
           userToken: state.userToken as string,
-          isLoading: state.isLoading as boolean,
           isSignedIn: state.isSignedIn as boolean
-        }
-        ),
-        []
-      );
+        });
 
     return (
         <AuthContext.Provider value={authContext}>

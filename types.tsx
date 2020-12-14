@@ -14,14 +14,14 @@ export type AuthStackParamList = {
 };
 
 export type BottomTabParamList = {
-  TabOne: undefined;
-  TabTwo: undefined;
+  Journey: undefined;
+  History: undefined;
 };
 
 export type TabOneParamList = {
-  TabOneScreen: undefined;
+  JourneyScreen: undefined;
 };
 
 export type TabTwoParamList = {
-  TabTwoScreen: undefined;
+  HistoryScreen: undefined;
 };

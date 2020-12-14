@@ -46,16 +46,29 @@ function SecuredRootNavigator() {
         { 
           headerShown: true,
           headerRight: () => (
-            <TouchableOpacity onPress={async () => {
-              debugger
-              await signOut();
-              // navigation.navigate("SignOut");
-            }}>
+            <TouchableOpacity
+              onPress={async () => {
+                await signOut();
+                // navigation.navigate('SignOut');
+              }}>
               <MaterialIcons name="logout" size={24} color="black" />            
             </TouchableOpacity>)})}
       initialRouteName="Root">
-      <Stack.Screen name="Root" component={BottomTabNavigator}/>
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: true, headerTitle: 'Credential'}}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignOut"
+        component={ChooseScreen}
+        options={{ headerShown: false}}
+      />
     </Stack.Navigator>
   );
 }
@@ -69,7 +82,7 @@ function AuthNavigator() {
       <AuthStack.Screen name="SignIn" component={SignInScreen} />
       <AuthStack.Screen name="SignUp" component={SignUpScreen} />
       <AuthStack.Screen name="RememberPassword" component={RememberPasswordScreen} />
-      <AuthStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <AuthStack.Screen name="NotFound" component={NotFoundScreen} />
     </AuthStack.Navigator>
   );
 }

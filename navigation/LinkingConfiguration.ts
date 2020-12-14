@@ -6,20 +6,20 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Journey: {
             screens: {
-              TabOneScreen: '/app/one',
+              JourneyScreen: '/app/journey',
             },
           },
-          TabTwo: {
+          History: {
             screens: {
-              TabTwoScreen: '/app/two',
+              HistoryScreen: '/app/history',
             },
           },
         },
       },
       NotFound: '*',
-      SignOut: '/',
+      SignOut: '/auth/choose',
     },
   },
 };

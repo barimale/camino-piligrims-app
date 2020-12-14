@@ -49,7 +49,6 @@ function SecuredRootNavigator() {
             <TouchableOpacity
               onPress={async () => {
                 await signOut();
-                // navigation.navigate('SignOut');
               }}>
               <MaterialIcons name="logout" size={24} color="black" />            
             </TouchableOpacity>)})}
@@ -62,11 +61,6 @@ function SecuredRootNavigator() {
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
-        options={{ headerShown: false}}
-      />
-      <Stack.Screen
-        name="SignOut"
-        component={ChooseScreen}
         options={{ headerShown: false}}
       />
     </Stack.Navigator>

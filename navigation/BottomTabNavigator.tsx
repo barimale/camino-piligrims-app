@@ -23,7 +23,7 @@ export default function BottomTabNavigator() {
         name="Journey"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="walk-outline" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons color={color} name="walk-outline" size={30} style={{ marginBottom: -3 }} />,
         }}
       />
       <BottomTab.Screen
@@ -35,10 +35,6 @@ export default function BottomTabNavigator() {
       />
     </BottomTab.Navigator>
   );
-}
-
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 const TabOneStack = createStackNavigator<TabOneParamList>();

@@ -70,7 +70,6 @@ const AuthContextProvider = ({ children }: any) => {
     
       const authContext = ({
           signIn: async (data: {username: string, password: string}) => {
-            // In a production app, 
             const piligrimId = "finalPiligrimIdFromFabricCaEtc";
 
             const result = await SecureStore.isAvailableAsync();
@@ -84,7 +83,7 @@ const AuthContextProvider = ({ children }: any) => {
             }
 
             console.log('before signin');
-            dispatch({ type: 'SIGN_IN', token: piligrimId });
+            await dispatch({ type: 'SIGN_IN', token: piligrimId });
           },
           signOut: async () => {
               try{
@@ -120,7 +119,7 @@ const AuthContextProvider = ({ children }: any) => {
               await AsyncStorage.setItem(TOKEN_KEY, piligrimId);
             }
 
-            dispatch({ type: 'SIGN_IN', token: piligrimId });
+            await dispatch({ type: 'SIGN_IN', token: piligrimId });
             console.log('finish signup');
           },
           userToken: state.userToken as string,

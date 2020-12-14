@@ -104,6 +104,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     height: 1,
     width: '100%',
-    backgroundColor: 'pink'
+    borderTopWidth: 1,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 0,
+    borderColor: 'black'
   },
 });

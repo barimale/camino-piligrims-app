@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect } from 'react';
-import { ColorSchemeName } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { ColorSchemeName, Platform } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthContext } from './contexts/AuthContext';
+import * as Notifications from 'expo-notifications';
 
 import Navigation, { AuthNavigation } from './navigation';
+import Constants from 'expo-constants';
 
 export default function ResourceLoadedApp(props: { colorScheme: ColorSchemeName }) {
   const { isSignedIn } = React.useContext(AuthContext);

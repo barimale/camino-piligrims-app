@@ -42,7 +42,7 @@ function SecuredRootNavigator() {
 
   return (
     <Stack.Navigator
-      screenOptions={({ navigation }) => (
+      screenOptions={() => (
         { 
           headerShown: true,
           headerRight: () => (

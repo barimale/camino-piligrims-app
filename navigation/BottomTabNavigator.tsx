@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
+import { FontAwesome5 } from '@expo/vector-icons'; 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import JourneyScreen from '../screens/app/JourneyScreen';
@@ -22,14 +23,14 @@ export default function BottomTabNavigator() {
         name="Journey"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="walk-outline" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="History"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <FontAwesome5 name="scroll" size={22} color={color} style={{ marginBottom: -3 }}/>,
         }}
       />
     </BottomTab.Navigator>

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { View, Text, Button, Separator } from '../../components/Themed';
+import { View, Text, Button } from '../../components/Themed';
 import { StackScreenProps } from '@react-navigation/stack';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import Colors from '../../constants/Colors';
+import { StyleSheet } from 'react-native';
 import { AuthStackParamList } from '../../types';
 import { styles } from "../../components/Themed";
 
@@ -33,28 +32,14 @@ export default function ChooseScreen({
           }}
         />
       </View>
-      <Separator />
-      <View style={styles.normalTextWrapper}>
-        <TouchableOpacity
-          onPress={()=>{
-            navigation.navigate('RememberPassword');
-          }}
-          style={styles.normalTextTouchable}>
-          <Text
-            style={styles.normalText}
-            lightColor={Colors.light.tint}>
-            I forgot password
-          </Text>
-        </TouchableOpacity>
-    </View>
   </View>
-    );
-  }
+);
+}
 
-  const innerStyles = StyleSheet.create({
-    buttonWrapper: {
-      paddingTop: 16,
-      height: '20%',
-      width: '80%',
-    }
-  });
+const innerStyles = StyleSheet.create({
+  buttonWrapper: {
+    paddingTop: 16,
+    height: '20%',
+    width: '80%',
+  }
+});

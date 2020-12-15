@@ -13,7 +13,6 @@ import AuthLinkingConfiguration from './AuthLinkingConfiguration';
 import SignInScreen from '../screens/auth/SignInScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
 import { AuthContext } from '../contexts/AuthContext';
-import { ModeContext, ModeContextProvider } from '../contexts/ModeContext';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (

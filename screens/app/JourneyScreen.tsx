@@ -5,18 +5,27 @@ import { Text, View } from '../../components/Themed';
 
 import { AntDesign } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
+import logo from '../../assets/images/logo100squared.png';
+import { Image } from 'react-native';
 
 export default function JourneyScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={()=>{let i = "ImplementIt"}} style={styles.helpLink}>
-          <Text style={styles.title}>
-            
+          <Text style={[styles.title, {alignSelf: 'center'}]}>
+          Bom Caminho!
           </Text>
-          <AntDesign name="plus" size={64} color={Colors.light.tint} style={[{textAlign: 'center'}, styles.helpLinkText]}/>
+          <Image source={logo} style={[{ height: 64, width: 64, paddingTop: 10, paddingBottom: 8, alignSelf:'center'}]} />
+          {/* <AntDesign name="plus" size={64} color={Colors.light.tint} style={[{textAlign: 'center'}, styles.helpLinkText]}/> */}
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            Bom Caminho!
+            Click here
+          </Text>
+          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+            and
+          </Text>
+          <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
+            start your journey
           </Text>
         </TouchableOpacity>
       </View>

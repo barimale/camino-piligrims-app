@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Button } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
-import { View, Text } from '../../components/Themed';
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, Separator } from '../../components/Themed';
 import { AuthContext } from '../../contexts/AuthContext';
 import { StyleSheet } from 'react-native';
 import { styles } from "../../components/Themed";
+import { StyledLogo } from '../../components/StyledLogo';
 
 export default function SignUpScreen() {
     const [name, setName] = React.useState('');
@@ -16,14 +16,15 @@ export default function SignUpScreen() {
   
     return (
       <View style={styles.pageWrapper}>
-        <View style={styles.logoWrapper}>
-          <Text style={styles.title}>Welcome</Text>
-          <Text style={styles.title}>Peligrino</Text>
-          <Text style={styles.title}>!</Text>
-        </View>
+      <View style={{marginTop: 20}}>
+        <Text style={[styles.title, {textAlign: 'left'}]}>Sign up!</Text>
+      </View>
+      <View style={styles.logoWrapper}>
+        <StyledLogo />
+      </View>
         <View style={innerStyles.buttonWrapper}>
           <Text>
-            Name
+            Name:
           </Text>
           <TextInput
             style={styles.borderedText}
@@ -33,7 +34,7 @@ export default function SignUpScreen() {
         </View>
         <View style={innerStyles.buttonWrapper}>
           <Text>
-            Surname
+            Surname:
           </Text>
           <TextInput
             style={styles.borderedText}
@@ -51,12 +52,18 @@ export default function SignUpScreen() {
             onChangeText={setEmail}
           />
         </View>
-        <View style={innerStyles.buttonWrapper}>
-          <Button disabled={isSigningUp} title="Sign up" onPress={async () => {
+        <Separator/>
+        <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40}]}>
+          <TouchableOpacity
+            onPress={async () => {
               setIsSigningUp(true);
               await signUp({ name, surname, email });
               setIsSigningUp(false);
-            }} />
+            }}>
+            <View style={styles.normalTextWrapper}>            
+              <Text style={styles.normalText}>Register</Text>           
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -64,8 +71,10 @@ export default function SignUpScreen() {
 
   const innerStyles = StyleSheet.create({
     buttonWrapper: {
-      paddingTop: 16,
-      height: '15%',
+      paddingTop: 10,
+      paddingBottom: 10,
+      textAlign: 'center',
+      height: '10%',
       width: '80%',
     }
   });

@@ -12,7 +12,6 @@ import LinkingConfiguration from './LinkingConfiguration';
 import AuthLinkingConfiguration from './AuthLinkingConfiguration';
 import SignInScreen from '../screens/auth/SignInScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
-import RememberPasswordScreen from '../screens/auth/RememberPasswordScreen';
 import { AuthContext } from '../contexts/AuthContext';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -56,7 +55,7 @@ function SecuredRootNavigator() {
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
-        options={{ headerShown: true, headerTitle: 'Credential'}}
+        options={{ headerShown: true, headerTitle: 'Credential' }}
       />
       <Stack.Screen
         name="NotFound"
@@ -71,11 +70,10 @@ const AuthStack = createStackNavigator<AuthStackParamList>();
 
 function AuthNavigator() {
   return (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+    <AuthStack.Navigator screenOptions={{ headerShown: true, headerTitle: 'Camino Digital Credential' }}>
       <AuthStack.Screen name="Choose" component={ChooseScreen} />
       <AuthStack.Screen name="SignIn" component={SignInScreen} />
       <AuthStack.Screen name="SignUp" component={SignUpScreen} />
-      <AuthStack.Screen name="RememberPassword" component={RememberPasswordScreen} />
       <AuthStack.Screen name="NotFound" component={NotFoundScreen} />
     </AuthStack.Navigator>
   );

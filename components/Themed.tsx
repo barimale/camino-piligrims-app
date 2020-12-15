@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+import Constants from 'expo-constants';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -70,12 +71,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-    marginTop: 10,
-    marginBottom: 20,
+    // marginTop: Constants.statusBarHeight,
+    marginBottom: 40
   },
   normalTextWrapper: {
-    marginTop: 15,
-    marginHorizontal: 20,
+    marginTop: 10,
+    marginHorizontal: 10,
     alignItems: 'center',
   },
   normalTextTouchable: {
@@ -89,10 +90,11 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20,
+    padding: 10,
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
+    fontFamily: 'space-mono'
   },
 });

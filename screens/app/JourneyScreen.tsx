@@ -13,7 +13,7 @@ export default function JourneyScreen() {
       <View style={styles.helpContainer}>
         <TouchableOpacity onPress={()=>{let i = "ImplementIt"}} style={styles.helpLink}>
           <Text style={[styles.title, {alignSelf: 'center'}]}>
-          Bom Caminho!
+            Bom Caminho!
           </Text>
           <Image source={logo} style={[{ height: 64, width: 64, paddingTop: 10, paddingBottom: 8, alignSelf:'center'}]} />
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>

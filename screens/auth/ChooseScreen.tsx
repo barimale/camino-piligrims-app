@@ -14,32 +14,34 @@ export default function ChooseScreen({
     return (
     <View style={[styles.pageWrapper]}>
       <View style={{marginTop: 20}}>
-        <Text style={styles.title}>Welcome Piligrim!</Text>
+        <Text style={[styles.title,{ fontSize: 50}]}>Welcome!</Text>
       </View>
       <View style={styles.logoWrapper}>
         <StyledLogo />
       </View>
-      <View style={[innerStyles.buttonWrapper, styles.borderedText]}>
+      <View style={[innerStyles.buttonWrapper, styles.borderedText, {borderRadius: 10}]}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('SignIn');
             }}>
-            <View style={styles.normalTextWrapper}>            
-              <Text style={styles.normalText}>Sign in</Text>           
+            <View style={{}}>            
+              <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>           
             </View>        
           </TouchableOpacity>
-        </View>
-        <Separator/>
-        <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40}]}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('SignUp');
-            }}>
-            <View style={styles.normalTextWrapper}>            
-              <Text style={styles.normalText}>Sign up</Text>           
-            </View>
-          </TouchableOpacity>
-        </View>
+      </View>
+      <Separator/>
+      <View><Text>or</Text></View>
+      <Separator/>
+      <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('SignUp');
+          }}>
+          <View style={{}}>            
+            <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>SIGN UP</Text>           
+          </View>
+        </TouchableOpacity>
+      </View>
   </View>
 );
 }
@@ -57,7 +59,6 @@ const innerStyles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 16,
     paddingBottom: 16,
-    // height: '20%',
     width: '80%',
   }
 });

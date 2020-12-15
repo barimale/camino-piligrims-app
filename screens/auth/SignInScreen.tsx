@@ -6,7 +6,7 @@ import { styles } from "../../components/Themed";
 import { StyleSheet } from 'react-native';
 import { AuthStackParamList } from '../../types';
 import { StackScreenProps } from '@react-navigation/stack';
-import { StyledLogo } from '../../components/StyledLogo';
+import * as Colors from "../../constants/Colors";
 
 export default function SignInScreen({navigation}: StackScreenProps<AuthStackParamList, 'SignIn'>) {
     const [username, setUsername] = React.useState('');
@@ -17,33 +17,29 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
   
     return (
       <View style={styles.pageWrapper}>
-      <View style={{marginTop: 20}}>
-        <Text style={[styles.title, {textAlign: 'left'}]}>Sign in!</Text>
-      </View>
-        <View style={styles.logoWrapper}>
-          <StyledLogo />
+        <View style={{marginTop: 20}}>
+          <Text style={[styles.title]}>Sign in</Text>
         </View>
-        
           <View style={innerStyles.buttonWrapper}>
             <Text>
-              Unique ID
+              Piligrim ID
             </Text>
             <TextInput
-              style={styles.borderedText}
+              style={[styles.borderedText, {backgroundColor: Colors.default.light.tabIconDefault}]}
               value={username}
               onChangeText={setUsername}
             />
           </View>
           <Separator/>
-          <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40}]}>
+          <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
             <TouchableOpacity
               onPress={async () => {
                 setIsSigningIn(true);
                 await signIn({ username, password });
                 setIsSigningIn(false);
               }}>
-              <View style={styles.normalTextWrapper}>            
-                <Text style={styles.normalText}>Login</Text>           
+              <View style={[innerStyles.normalTextWrapper]}>
+                <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>
               </View>
             </TouchableOpacity>
         </View>
@@ -52,9 +48,21 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
   }
 
   const innerStyles = StyleSheet.create({
+    normalTextWrapper: {
+      marginTop: 10,
+      marginHorizontal: 10,
+      alignItems: 'center',
+      textAlignVertical: 'center'
+    },
     buttonWrapper: {
       paddingTop: 10,
       paddingBottom: 10,
+      textAlign: 'center',
+      height: '10%',
+      width: '80%',
+    },
+    slimButtonWrapper: {
+      borderRadius: 10,
       textAlign: 'center',
       height: '10%',
       width: '80%',

@@ -18,7 +18,7 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="Journey"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].text }}>
       <BottomTab.Screen
         name="Journey"
         component={TabOneNavigator}

@@ -3,7 +3,6 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 
-import { AntDesign } from '@expo/vector-icons';
 import Colors from '../../constants/Colors';
 import logo from '../../assets/images/logo100squared.png';
 import { Image } from 'react-native';
@@ -17,7 +16,6 @@ export default function JourneyScreen() {
           Bom Caminho!
           </Text>
           <Image source={logo} style={[{ height: 64, width: 64, paddingTop: 10, paddingBottom: 8, alignSelf:'center'}]} />
-          {/* <AntDesign name="plus" size={64} color={Colors.light.tint} style={[{textAlign: 'center'}, styles.helpLinkText]}/> */}
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
             Click here
           </Text>
@@ -58,5 +56,5 @@ const styles = StyleSheet.create({
   },
   helpLinkText: {
     textAlign: 'center',
-  },
+  }
 });

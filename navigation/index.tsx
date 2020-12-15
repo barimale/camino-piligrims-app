@@ -13,6 +13,7 @@ import AuthLinkingConfiguration from './AuthLinkingConfiguration';
 import SignInScreen from '../screens/auth/SignInScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
 import { AuthContext } from '../contexts/AuthContext';
+import { ModeContext, ModeContextProvider } from '../contexts/ModeContext';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -40,29 +41,29 @@ function SecuredRootNavigator() {
   const { signOut } = React.useContext(AuthContext);
 
   return (
-    <Stack.Navigator
-      screenOptions={() => (
-        { 
-          headerShown: true,
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={async () => {
-                await signOut();
-              }}>
-              <MaterialIcons name="logout" size={24} color="black" />            
-            </TouchableOpacity>)})}
-      initialRouteName="Root">
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: true, headerTitle: 'Credential' }}
-      />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ headerShown: false}}
-      />
-    </Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={() => (
+          { 
+            headerShown: true,
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={async () => {
+                  await signOut();
+                }}>
+                <MaterialIcons name="logout" size={24} color="black" />            
+              </TouchableOpacity>)})}
+        initialRouteName="Root">
+        <Stack.Screen
+          name="Root"
+          component={BottomTabNavigator}
+          options={{ headerShown: true, headerTitle: 'Dear Piligrino!' }}
+        />
+        <Stack.Screen
+          name="NotFound"
+          component={NotFoundScreen}
+          options={{ headerShown: false}}
+        />
+      </Stack.Navigator>
   );
 }
 

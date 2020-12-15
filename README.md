@@ -9,6 +9,7 @@ WebBrowser.openBrowserAsync(
 
 Next todos:
 ```
+Implement it together with notification: https://snack.expo.io/@mainak/snackbar
 Modal - expo: https://docs.expo.io/versions/latest/react-native/modal/ for logout and start journey
 FLatList: https://docs.expo.io/versions/v37.0.0/react-native/flatlist/#listemptycomponent
 FlatList with previous journeys: add onPress etc.

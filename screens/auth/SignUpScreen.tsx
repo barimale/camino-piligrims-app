@@ -50,7 +50,7 @@ export default function SignUpScreen() {
           />
         </View>
         <Separator/>
-        <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
+        <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginTop: 30, backgroundColor: 'black', marginBottom: 40, borderRadius: 10}]}>
           <TouchableOpacity
             disabled={isSigningUp}
             onPress={async () => {
@@ -58,8 +58,8 @@ export default function SignUpScreen() {
               await signUp({ name, surname, email });
               setIsSigningUp(false);
             }}>
-            <View style={styles.normalTextWrapper}>       
-              <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>REGISTER</Text>           
+            <View style={{backgroundColor: 'transparent'}}>       
+              <Text style={[styles.normalText, {color: 'white', fontSize: 20, fontWeight: 'bold'}]}>REGISTER</Text>           
             </View>
           </TouchableOpacity>
         </View>

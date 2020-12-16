@@ -6,6 +6,7 @@ import { AuthStackParamList } from '../../types';
 import { styles } from "../../components/Themed";
 import { StyledLogo } from "../../components/StyledLogo"; 
 import { TouchableOpacity } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 export default function ChooseScreen({
   navigation,
@@ -17,28 +18,35 @@ export default function ChooseScreen({
         <Text style={[styles.title,{ fontSize: 50}]}>Welcome!</Text>
       </View>
       <View style={styles.logoWrapper}>
-        <StyledLogo />
+        <TouchableOpacity
+          onPress={() => {
+            WebBrowser.openBrowserAsync(
+              'https://www.caminodesantiago.gal/pt/inicio'
+            );
+          }}>
+          <StyledLogo />     
+        </TouchableOpacity>
       </View>
-      <View style={[innerStyles.buttonWrapper, styles.borderedText, {borderRadius: 10}]}>
+      <View style={[innerStyles.buttonWrapper, styles.borderedText, {backgroundColor: '#C1272D', borderRadius: 10}]}>
           <TouchableOpacity
             onPress={() => {
               navigation.navigate('SignIn');
             }}>
-            <View style={{}}>            
-              <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>           
+            <View style={{backgroundColor: 'transparent'}}>            
+              <Text style={[styles.normalText, {color: 'white', fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>           
             </View>        
           </TouchableOpacity>
       </View>
       <Separator/>
       <View><Text>or</Text></View>
       <Separator/>
-      <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
+      <View style={[innerStyles.buttonWrapper, styles.borderedText, {backgroundColor: 'black',marginBottom: 40, borderRadius: 10}]}>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('SignUp');
           }}>
-          <View style={{}}>            
-            <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>SIGN UP</Text>           
+          <View style={{backgroundColor: 'transparent'}}>            
+            <Text style={[styles.normalText, {color: 'white',fontSize: 20, fontWeight: 'bold'}]}>SIGN UP</Text>           
           </View>
         </TouchableOpacity>
       </View>

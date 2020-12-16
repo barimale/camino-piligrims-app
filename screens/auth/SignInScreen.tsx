@@ -31,15 +31,15 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
             />
           </View>
           <Separator/>
-          <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
+          <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginTop: 30, backgroundColor: '#C1272D', marginBottom: 40, borderRadius: 10}]}>
             <TouchableOpacity
               onPress={async () => {
                 setIsSigningIn(true);
                 await signIn({ username, password });
                 setIsSigningIn(false);
               }}>
-              <View style={[innerStyles.normalTextWrapper]}>
-                <Text style={[styles.normalText, {fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>
+              <View style={{backgroundColor: 'transparent'}}>
+                <Text style={[styles.normalText, {color: 'white', fontSize: 20, fontWeight: 'bold'}]}>LOGIN</Text>
               </View>
             </TouchableOpacity>
         </View>
@@ -58,13 +58,11 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
       paddingTop: 10,
       paddingBottom: 10,
       textAlign: 'center',
-      height: '10%',
       width: '80%',
     },
     slimButtonWrapper: {
       borderRadius: 10,
       textAlign: 'center',
-      height: '10%',
       width: '80%',
     }
   });

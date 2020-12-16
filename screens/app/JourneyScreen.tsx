@@ -11,8 +11,8 @@ export default function JourneyScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.helpContainer}>
-        <TouchableOpacity onPress={()=>{let i = "ImplementIt"}} style={styles.helpLink}>
-          <Text style={[styles.title, {alignSelf: 'center'}]}>
+        <TouchableOpacity onPress={()=>{let i = "ImplementIt"}} style={[styles.helpLink,{padding: 10, borderRadius: 10, borderWidth: 2, borderStyle: 'dashed'}]}>
+          <Text style={[styles.title, {alignSelf: 'center', paddingBottom: 10}]}>
             Bom Caminho!
           </Text>
           <Image source={logo} style={[{ height: 64, width: 64, paddingTop: 10, paddingBottom: 8, alignSelf:'center'}]} />
@@ -20,10 +20,10 @@ export default function JourneyScreen() {
             Click here
           </Text>
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            and
+            to
           </Text>
           <Text style={styles.helpLinkText} lightColor={Colors.light.tint}>
-            start your journey
+            START your journey
           </Text>
         </TouchableOpacity>
       </View>

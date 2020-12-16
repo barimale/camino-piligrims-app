@@ -57,20 +57,23 @@ function SecuredRootNavigator() {
                   <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                       <Text style={styles.modalText}>Do You really want to logout?</Text>
-                      <TouchableOpacity
-                        style={{ ...styles.openButton, backgroundColor: '#C1272D' }}
-                        onPress={() => {
-                          setModalVisible(false);
-                        }}>
-                        <Text style={styles.textStyle}>No</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
-                        style={{ ...styles.openButton, backgroundColor: 'black', borderColor: 'black' }}
-                        onPress={async () => {
-                          await signOut();
-                        }}>
-                        <Text style={styles.textStyle}>Yes</Text>
-                      </TouchableOpacity>
+                      <View style={{display: 'flex', flexDirection: 'row'}}>
+                        <TouchableOpacity
+                          style={{ ...styles.openButton, backgroundColor: '#C1272D' }}
+                          onPress={() => {
+                            setModalVisible(false);
+                          }}>
+                          <Text style={styles.textStyle}>No</Text>
+                        </TouchableOpacity>
+                        <Text style={{paddingLeft: 10, paddingRight: 10, color: 'black', textAlignVertical: 'center'}}>or</Text>
+                        <TouchableOpacity
+                          style={{ ...styles.openButton, backgroundColor: 'black', borderColor: 'black' }}
+                          onPress={async () => {
+                            await signOut();
+                          }}>
+                          <Text style={styles.textStyle}>Yes</Text>
+                        </TouchableOpacity>
+                      </View>
                     </View>
                   </View>
                 </Modal>

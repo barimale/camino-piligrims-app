@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
-// import { Instance } from "../services/identity-provider";
+import { Instance } from "../services/identity-provider";
 
 interface AuthContextType {
     signIn: (input: {username: string, password: string}) => Promise<void>;
@@ -109,6 +109,7 @@ const AuthContextProvider = ({ children }: any) => {
           signUp: async (data: any) => {
             // In a production app, we need to send user data to server and get a token
             console.log('start signup');
+
             const piligrimId = "finalPiligrimIdFromFabricCaEtc";
             const result = await SecureStore.isAvailableAsync();
                 

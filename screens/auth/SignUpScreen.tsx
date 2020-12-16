@@ -52,6 +52,7 @@ export default function SignUpScreen() {
         <Separator/>
         <View style={[innerStyles.buttonWrapper, styles.borderedText, {marginBottom: 40, borderRadius: 10}]}>
           <TouchableOpacity
+            disabled={isSigningUp}
             onPress={async () => {
               setIsSigningUp(true);
               await signUp({ name, surname, email });

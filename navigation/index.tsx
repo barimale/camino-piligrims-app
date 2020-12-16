@@ -55,7 +55,7 @@ function SecuredRootNavigator() {
         <Stack.Screen
           name="Root"
           component={BottomTabNavigator}
-          options={{ headerShown: true, headerTitle: 'Dear Piligrino!' }}
+          options={{ headerShown: true, headerTitle: 'Hi Piligrino!' }}
         />
         <Stack.Screen
           name="NotFound"

@@ -14,6 +14,9 @@ import SignInScreen from '../screens/auth/SignInScreen';
 import SignUpScreen from '../screens/auth/SignUpScreen';
 import { AuthContext } from '../contexts/AuthContext';
 
+import { useEffect, useState } from 'react';
+import { Modal, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
+
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
     <NavigationContainer
@@ -37,6 +40,7 @@ export function AuthNavigation({ colorScheme }: { colorScheme: ColorSchemeName }
 const Stack = createStackNavigator<RootStackParamList>();
 
 function SecuredRootNavigator() {
+  const [modalVisible, setModalVisible] = React.useState(false);
   const { signOut } = React.useContext(AuthContext);
 
   return (
@@ -45,12 +49,39 @@ function SecuredRootNavigator() {
           { 
             headerShown: true,
             headerRight: () => (
-              <TouchableOpacity
-                onPress={async () => {
-                  await signOut();
-                }}>
-                <MaterialIcons name="logout" size={24} color="black" />            
-              </TouchableOpacity>)})}
+              <>
+                <Modal
+                  animationType="fade"
+                  transparent={true}
+                  visible={modalVisible}>
+                  <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                      <Text style={styles.modalText}>Do You really want to logout?</Text>
+                      <TouchableOpacity
+                        style={{ ...styles.openButton, backgroundColor: '#C1272D' }}
+                        onPress={() => {
+                          setModalVisible(false);
+                        }}>
+                        <Text style={styles.textStyle}>No</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{ ...styles.openButton, backgroundColor: 'black', borderColor: 'black' }}
+                        onPress={async () => {
+                          await signOut();
+                        }}>
+                        <Text style={styles.textStyle}>Yes</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </Modal>
+                <TouchableOpacity
+                  onPress={() => {
+                    setModalVisible(true);
+                  }}>
+                  <MaterialIcons name="logout" size={24} color="black" />            
+                </TouchableOpacity>
+              </>
+          )})}
         initialRouteName="Root">
         <Stack.Screen
           name="Root"
@@ -78,3 +109,42 @@ function AuthNavigator() {
     </AuthStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  openButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});

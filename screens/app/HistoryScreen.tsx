@@ -7,6 +7,7 @@ import { SafeAreaView, FlatList } from 'react-native';
 import { useState } from 'react';
 import { styles } from "./journey/JourneyInProgress";
 import SelectedHistory from './history/SelectedJourney';
+import { ActivityIndicator } from 'react-native';
 
 interface JourneyInstance{
   startDate: string;
@@ -43,17 +44,25 @@ export default function HistoryScreen() {
   const [ selectedJourney, setSelectedJourney] = useState<JourneyInstance | undefined>(undefined);
 
   React.useEffect(()=>{
+    //TODO: rerender each time tab is choosen by user
     //TODO: get it from backend, subscribe to the event also for a specific End journey event
-    setAlreadyCompletedJourneys(new Array<JourneyInstance>());
+    setTimeout(()=>{
+      setAlreadyCompletedJourneys(new Array<JourneyInstance>());
+    }, 2000);
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       {alreadyCompletedJourneys === undefined || alreadyCompletedJourneys.length === 0 ? (
-        <View style={styles.stampWrapper}>
-          <Text style={styles.dateAndTime}>
-            No completed journeys found in the system
-          </Text>
+        <View style={{}}>
+          {alreadyCompletedJourneys === undefined && (
+            <ActivityIndicator size="large" color="black"/>
+          )}
+          {alreadyCompletedJourneys?.length === 0 && (
+            <Text style={styles.dateAndTime}>
+              No completed journeys found in the system
+            </Text>
+          )}
         </View>
       ):(
       selectedJourney !== undefined ? (

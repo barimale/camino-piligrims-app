@@ -3,9 +3,7 @@ import { StyleSheet } from 'react-native';
 
 import { View, Text } from '../../../components/Themed';
 
-import Colors from '../../../constants/Colors';
 import logo from '../../../assets/images/logo100squared.png';
-import { Image } from 'react-native';
 import { ListenerComponent } from '../../../services/identity-provider';
 import { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';

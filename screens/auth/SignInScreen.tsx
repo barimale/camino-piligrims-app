@@ -14,7 +14,7 @@ export default function SignInScreen({navigation}: StackScreenProps<AuthStackPar
     const [isSigningIn, setIsSigningIn] = React.useState<boolean>(false);
 
     const { signIn } = React.useContext(AuthContext);
-  
+
     return (
       <View style={styles.pageWrapper}>
         <View style={{marginTop: 20}}>

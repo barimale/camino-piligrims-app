@@ -49,7 +49,14 @@ export default function HistoryScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      {selectedJourney !== undefined ? (
+      {alreadyCompletedJourneys === undefined || alreadyCompletedJourneys.length === 0 ? (
+        <View style={styles.stampWrapper}>
+          <Text style={styles.dateAndTime}>
+            No completed journeys found in the system
+          </Text>
+        </View>
+      ):(
+      selectedJourney !== undefined ? (
         <SelectedHistory selectedJourneyId={selectedJourney.id}/>
       ):(
         <FlatList
@@ -65,10 +72,8 @@ export default function HistoryScreen() {
             }}/>}
           keyExtractor={item => item.id}
           ItemSeparatorComponent={()=><View style={styles.separator} />}
-        />
+        />)
       )}
     </SafeAreaView>
   );
 }
-
-

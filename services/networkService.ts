@@ -1,7 +1,3 @@
-export const SayHello = async () : Promise<any> => {
-    return null;
-}
-
 export const SignIn = async (): Promise<string> => {
     return "secret";
 }

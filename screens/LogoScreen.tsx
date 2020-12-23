@@ -1,8 +1,5 @@
-import { Asset } from 'expo-asset';
 import * as React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { ColorSchemeName } from 'react-native';
 import { StyledLogo } from "../components/StyledLogo";
 
@@ -25,5 +22,5 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     fontWeight: 'bold',
-  },
+  }
 });

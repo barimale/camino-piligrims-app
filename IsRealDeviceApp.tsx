@@ -8,7 +8,7 @@ import NotRealDeviceScreen from './screens/NotRealDeviceScreen';
 
 export default function IsRealDeviceApp(props: { colorScheme: ColorSchemeName }) {
 
-  if (true) {
+  if (!Device.isDevice) {
     return <NotRealDeviceScreen colorScheme={props.colorScheme}/>;
   } else {
     return (

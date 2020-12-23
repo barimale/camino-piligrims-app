@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 import { SafeAreaView, FlatList } from 'react-native';
@@ -9,13 +10,13 @@ import { styles } from "./journey/JourneyInProgress";
 import SelectedHistory from './history/SelectedJourney';
 import { ActivityIndicator } from 'react-native';
 
-interface JourneyInstance{
+interface JourneyFromThePastInstance{
   startDate: string;
   endDate: string;
   id: string;
 }
 
-export function Journey(input: { startDate: string, endDate: string , id: string, onPressed: (data: JourneyInstance)=> void}) {
+export function JourneyFromThePast(input: { startDate: string, endDate: string , id: string, onPressed: (data: JourneyFromThePastInstance)=> void}) {
   return (
     <View style={styles.stampWrapper}>
       <TouchableOpacity onPress={(event: any)=>{
@@ -40,28 +41,26 @@ export function Journey(input: { startDate: string, endDate: string , id: string
 
 export default function HistoryScreen() {
   //TODO: get id of the user from the context
-  const [ alreadyCompletedJourneys, setAlreadyCompletedJourneys] = useState<Array<JourneyInstance>| undefined>(undefined);
-  const [ selectedJourney, setSelectedJourney] = useState<JourneyInstance | undefined>(undefined);
+  const [ alreadyCompletedJourneys, setAlreadyCompletedJourneys] = useState<Array<JourneyFromThePastInstance>| undefined>(undefined);
+  const [ selectedJourney, setSelectedJourney] = useState<JourneyFromThePastInstance | undefined>(undefined);
 
   React.useEffect(()=>{
     //TODO: rerender each time tab is choosen by user
     //TODO: get it from backend, subscribe to the event also for a specific End journey event
     setTimeout(()=>{
-      setAlreadyCompletedJourneys(new Array<JourneyInstance>());
+      setAlreadyCompletedJourneys(new Array<JourneyFromThePastInstance>());
     }, 2000);
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       {alreadyCompletedJourneys === undefined || alreadyCompletedJourneys.length === 0 ? (
-        <View style={{}}>
+        <View style={innerStyles.emptyList}>
           {alreadyCompletedJourneys === undefined && (
             <ActivityIndicator size="large" color="black"/>
           )}
           {alreadyCompletedJourneys?.length === 0 && (
-            <Text style={styles.dateAndTime}>
-              No completed journeys found in the system
-            </Text>
+            <Text style={innerStyles.singleLineBolded}>It is not found any completed journey from the past.</Text>
           )}
         </View>
       ):(
@@ -72,11 +71,11 @@ export default function HistoryScreen() {
           style={{paddingTop: 10}}
           showsVerticalScrollIndicator={false}
           data={alreadyCompletedJourneys}
-          renderItem={({ item }) => <Journey 
+          renderItem={({ item }) => <JourneyFromThePast 
             startDate={item.startDate}
             endDate={item.endDate}
             id={item.id}
-            onPressed={(value: JourneyInstance)=>{
+            onPressed={(value: JourneyFromThePastInstance)=>{
               setSelectedJourney(value);
             }}/>}
           keyExtractor={item => item.id}
@@ -86,3 +85,22 @@ export default function HistoryScreen() {
     </SafeAreaView>
   );
 }
+
+const innerStyles = StyleSheet.create({
+  emptyList: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  singleLineBolded: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingBottom: 10
+  },
+  singleLineNormal: {
+    fontSize: 10
+  }
+});

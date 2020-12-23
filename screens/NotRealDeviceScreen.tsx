@@ -4,7 +4,7 @@ import { ColorSchemeName } from 'react-native';
 
 export default function NotRealDeviceScreen(props: { colorScheme: ColorSchemeName }) {
   return (
-    <View style={styles.logoContainer}>
+    <View style={styles.messageContainer}>
       <Text style={styles.singleLineBolded}>Device is not recognized as a real one.</Text>
       <Text style={styles.singleLineNormal}>Ensure you are not using any simulator.</Text>
       <Text style={styles.singleLineNormal}>Otherwise contact with application owner:</Text>
@@ -14,7 +14,7 @@ export default function NotRealDeviceScreen(props: { colorScheme: ColorSchemeNam
 }
 
 const styles = StyleSheet.create({
-  logoContainer: {
+  messageContainer: {
     flex: 1,
     backgroundColor: 'transparent',
     alignItems: 'center',

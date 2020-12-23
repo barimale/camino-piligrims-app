@@ -1,9 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
-import { Instance } from "../services/identity-provider";
-// import { GatewayInstance } from "../services/identity-provider";
-import { SayHello } from "../services/networkService";
+import * as networkService from "../services/networkService";
 
 interface AuthContextType {
     signIn: (input: {username: string, password: string}) => Promise<void>;
@@ -72,9 +70,7 @@ const AuthContextProvider = ({ children }: any) => {
     
       const authContext = ({
           signIn: async (data: {username: string, password: string}) => {
-            debugger
-            const said = await SayHello();
-            debugger
+            const secret = await networkService.SignIn();
             const piligrimId = "finalPiligrimIdFromFabricCaEtc";
 
             const result = await SecureStore.isAvailableAsync();
@@ -92,6 +88,7 @@ const AuthContextProvider = ({ children }: any) => {
           },
           signOut: async () => {
               try{
+                
                 const result = await SecureStore.isAvailableAsync();
                 
                 if(result){

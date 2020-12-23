@@ -10,7 +10,7 @@ interface ListenerProps extends PropsWithChildren<any>{
     address: string;
     port: string | number;
     isActive: boolean;
-    // TODO: implement in
+    // TODO: implement in system
     onEvent: (data: StampInstance) => void;
 }
 

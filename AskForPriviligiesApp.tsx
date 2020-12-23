@@ -11,10 +11,13 @@ export default function AskForPriviligiesApp(props: { colorScheme: ColorSchemeNa
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestPermissionsAsync();
+      
       if (status !== 'granted') {
         setAllGranted(false);
         return;
       } else{
+        await Location.enableNetworkProviderAsync();
+        
         setAllGranted(true);
       }
     })();

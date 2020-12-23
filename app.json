@@ -26,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo100squared.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "camino.digital.credential"
     },
     "web": {
       "favicon": "./assets/images/logo100squared.png"

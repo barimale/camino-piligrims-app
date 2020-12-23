@@ -8,6 +8,7 @@ import logo from '../../../assets/images/logo100squared.png';
 import { Image } from 'react-native';
 import { useState } from 'react';
 import { ActivityIndicator } from 'react-native';
+import * as Location from 'expo-location';
 
 export default function StartJourneySubScreen() {
   const [isStarting, setIsStarting] = useState<boolean>(false);

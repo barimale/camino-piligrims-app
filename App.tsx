@@ -4,7 +4,7 @@ import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import LogoScreen from './screens/LogoScreen';
 
-import ResourceLoadedApp from './ResourceLoadedApp';
+import IsRealDeviceApp from './IsRealDeviceApp';
 import { AuthContextProvider } from './contexts/AuthContext';
 
 export default function App() {
@@ -16,7 +16,7 @@ export default function App() {
   } else {
     return (
       <AuthContextProvider>
-        <ResourceLoadedApp colorScheme={colorScheme}/>
+        <IsRealDeviceApp colorScheme={colorScheme}/>
       </AuthContextProvider>
     );
   }

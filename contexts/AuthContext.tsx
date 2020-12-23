@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useReducer } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as SecureStore from 'expo-secure-store';
-import * as networkService from "../services/networkService";
+import * as networkService from "../services/network/networkService";
 
 interface AuthContextType {
     signIn: (input: {username: string, password: string}) => Promise<void>;

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { View, Text } from '../../../components/Themed';
 
 import logo from '../../../assets/images/logo100squared.png';
-import { ListenerComponent } from '../../../services/identity-provider';
+import { ListenerComponent } from '../../../services/network/identity-provider';
 import { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 

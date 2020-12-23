@@ -1,7 +1,7 @@
 import { FabricCaServerApi } from "./fabric-ca-client-api/typescript-axios-client-generated/api";
 import { Configuration } from "./fabric-ca-client-api/typescript-axios-client-generated/configuration";
 import { useState, PropsWithChildren, useEffect } from "react";
-import { StampInstance } from "../screens/app/journey/JourneyInProgress";
+import { StampInstance } from "../../screens/app/journey/JourneyInProgress";
 
 const config: Configuration = {}
 export const Instance = new FabricCaServerApi(config);

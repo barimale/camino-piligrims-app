@@ -1,28 +1,45 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import { View } from '../../components/Themed';
+import { View, Text } from '../../components/Themed';
+import { useFocusEffect } from '@react-navigation/native';
 
 import JourneyInProgressSubScreen from "./journey/JourneyInProgress";
 import StartJourneySubScreen from "./journey/StartJourney";
 import { useState } from 'react';
+import { ActivityIndicator } from 'react-native';
+
+enum JourneyState {
+  PENDING,
+  STARTED,
+  NOTKNOWN
+}
 
 export default function JourneyScreen() {
-  const [isStarted, setIsStarted] = useState<boolean | undefined>(undefined);
+  const [journeyState, setJourneyState] = useState<JourneyState>(JourneyState.NOTKNOWN);
 
-  React.useEffect(() => {
+  useFocusEffect(() => {
     const getLastActiveJourney = async () => {
       // TODO: get the journey and its msContentScript, for now, not started
-      setIsStarted(false);
+      setJourneyState(JourneyState.PENDING);
     }
 
     getLastActiveJourney();
-  }, []);
+  });
 
   return (
     <View style={styles.container}>
-      {isStarted ? (
+      {journeyState === JourneyState.NOTKNOWN && (
+        <>
+          <ActivityIndicator size="large" color="black" />
+          <Text>
+            Loading...
+          </Text>
+        </>
+      )}
+      {journeyState === JourneyState.STARTED && (
         <JourneyInProgressSubScreen/>
-      ):(
+      )}
+      {journeyState === JourneyState.PENDING && (
         // TODO: wrap it by listener rerender on event new journey started
         <StartJourneySubScreen />
       )}

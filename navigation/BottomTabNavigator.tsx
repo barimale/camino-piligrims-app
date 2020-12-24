@@ -9,6 +9,7 @@ import useColorScheme from '../hooks/useColorScheme';
 import JourneyScreen from '../screens/app/JourneyScreen';
 import HistoryScreen from '../screens/app/HistoryScreen';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { JourneyContextProvider } from '../contexts/JourneyContext';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -40,11 +41,16 @@ export default function BottomTabNavigator() {
 const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
+  const wrappedScreen = () => 
+    <JourneyContextProvider>
+      <JourneyScreen/>
+    </JourneyContextProvider>;
+
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="JourneyScreen"
-        component={JourneyScreen}
+        component={wrappedScreen}
         options={{ headerShown: false}}
       />
     </TabOneStack.Navigator>

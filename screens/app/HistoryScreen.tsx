@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { StyleSheet } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { Text, View } from '../../components/Themed';
 import { SafeAreaView, FlatList } from 'react-native';
@@ -44,20 +45,25 @@ export default function HistoryScreen() {
   const [ alreadyCompletedJourneys, setAlreadyCompletedJourneys] = useState<Array<JourneyFromThePastInstance>| undefined>(undefined);
   const [ selectedJourney, setSelectedJourney] = useState<JourneyFromThePastInstance | undefined>(undefined);
 
-  React.useEffect(()=>{
+  useFocusEffect(()=>{
     //TODO: rerender each time tab is choosen by user
     //TODO: get it from backend, subscribe to the event also for a specific End journey event
     setTimeout(()=>{
       setAlreadyCompletedJourneys(new Array<JourneyFromThePastInstance>());
     }, 2000);
-  }, []);
+  });
 
   return (
     <SafeAreaView style={styles.container}>
       {alreadyCompletedJourneys === undefined || alreadyCompletedJourneys.length === 0 ? (
         <View style={innerStyles.emptyList}>
           {alreadyCompletedJourneys === undefined && (
-            <ActivityIndicator size="large" color="black"/>
+            <>
+              <ActivityIndicator size="large" color="black"/>
+              <Text>
+                Loading...
+              </Text>
+            </>
           )}
           {alreadyCompletedJourneys?.length === 0 && (
             <Text style={innerStyles.singleLineBolded}>It is not found any completed journey from the past.</Text>

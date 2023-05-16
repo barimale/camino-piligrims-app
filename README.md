@@ -4,6 +4,11 @@ https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fab
 ```
 
 Next todos:
+use vscode extension:
+https://marketplace.visualstudio.com/items?itemName=Spydra.hyperledger-fabric-debugger
+https://github.com/IBM-Blockchain/blockchain-vscode-extension
+https://medium.com/@lennartfr/visual-studio-code-for-hyperledger-fabric-looking-into-the-future-9624e81f568d
+
 configure fabric by using azure.
 ```
 https://www.npmjs.com/package/@hyperledger/fabric-gateway

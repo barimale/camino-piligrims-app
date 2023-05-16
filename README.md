@@ -4,7 +4,9 @@ https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fab
 ```
 
 Next todos:
+configure fabric by using azure.
 ```
+https://www.npmjs.com/package/@hyperledger/fabric-gateway
 https://docs.expo.io/versions/latest/react-native/activityindicator/
 
 Implement it together with notification: https://snack.expo.io/@mainak/snackbar

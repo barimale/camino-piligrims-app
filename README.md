@@ -1,4 +1,9 @@
 # Tips
+## Prereqs
+```
+- NodeJS 14.20.0
+```
+## hyperledger
 ```
 https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client
 ```
